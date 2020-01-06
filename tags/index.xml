@@ -2,14 +2,42 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Raghotham Sripadraj</title>
-    <link>http://example.org/tags/</link>
+    <link>https://raghothams.github.io/tags/</link>
     <description>Recent content in Tags on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
+    <lastBuildDate>Mon, 06 Jan 2020 19:04:42 +0530</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>knowledge</title>
+      <link>https://raghothams.github.io/tags/knowledge/</link>
+      <pubDate>Mon, 06 Jan 2020 19:04:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/tags/knowledge/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>learning</title>
+      <link>https://raghothams.github.io/tags/learning/</link>
+      <pubDate>Mon, 06 Jan 2020 19:04:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/tags/learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sharing</title>
+      <link>https://raghothams.github.io/tags/sharing/</link>
+      <pubDate>Mon, 06 Jan 2020 19:04:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/tags/sharing/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
