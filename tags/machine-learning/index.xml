@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Raghotham Sripadraj</title>
-    <link>https://raghothams.github.io/</link>
-    <description>Recent content on Raghotham Sripadraj</description>
+    <title>machine learning on Raghotham Sripadraj</title>
+    <link>https://raghothams.github.io/tags/machine-learning/</link>
+    <description>Recent content in machine learning on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Mon, 20 Jan 2020 19:58:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       
       <guid>https://raghothams.github.io/posts/generalists/</guid>
       <description>Traditionally, machine learning roles (in 2000s) were taken up by people mostly from research background. Their go-to toolkit would generally be R or Matlab because of the richness of algorithms offered by these programming languages. These solutions were intended to run on single compute instances. Slowly, these roles were taken by brilliant engineers who strongly believed in open source philosophy. They built algorithms in python which were easy to use and more accessible.</description>
-    </item>
-    
-    <item>
-      <title>Sharing Knowledge</title>
-      <link>https://raghothams.github.io/posts/sharing-knowledge/</link>
-      <pubDate>Mon, 06 Jan 2020 19:04:42 +0530</pubDate>
-      
-      <guid>https://raghothams.github.io/posts/sharing-knowledge/</guid>
-      <description>This post is mostly the thoughts that were triggered when I saw this tweet from James Clear - Unshared knowledge is like potential energy. It’s nice to have, but it only changes things when you turn it into something else. Your legacy is what you share, not what you know. https://t.co/0mq82fQUnP
-&amp;mdash; James Clear (@JamesClear) January 5, 2020  I have always had the habit of sharing everything I learn, be it a simple tweet or a complex concept.</description>
     </item>
     
   </channel>
