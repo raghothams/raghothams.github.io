@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>DLNA on RaspberryPi - Raghotham Sripadraj</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="DLNA on RaspberryPi" />
+<meta property="og:description" content="Setup media server server" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raghothams.github.io/posts/dlna-raspberrypi/" />
+<meta property="article:published_time" content="2014-09-07T19:58:42+05:30" />
+<meta property="article:modified_time" content="2014-09-07T19:58:42+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DLNA on RaspberryPi"/>
+<meta name="twitter:description" content="Setup media server server"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://raghothams.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://raghothams.github.io/">
+				<img src="https://www.dropbox.com/s/1ie2nedgkaoaf1h/myAvatar.svg?raw=1" alt="Raghotham Sripadraj" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://raghothams.github.io/">Raghotham Sripadraj</a></h1>
+	<div class="site-description"><p></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/raghothams" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/raghothams" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">07</span>
+							<span class="rest">Sep 2014</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">DLNA on RaspberryPi</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p>I always wanted to setup a media server at home for the following reasons:</p>
+<ol>
+<li>Reduce redundancy — having multiple copies of media for different devices like phone, tablet, smart TV etc</li>
+<li>Ease of use — no need to copy files to and from devices to play media (mostly <em>Pink Floyd</em> and movies)</li>
+<li>One stop shop with transmission integration — download files on RaspberryPi and they appear on the media server</li>
+</ol>
+<p>The easiest solution was to turn my RaspberryPi into a DLNA server. For this, I required to have a few basic packages and had to configure each.</p>
+<p>It was a bit hard to find all of them in a single post and hence I’m writing this post.</p>
+<h1 id="packages-required">Packages required</h1>
+<ul>
+<li>samba</li>
+<li>nginx (for transmission)</li>
+<li>nfs</li>
+<li>ntfs (optional, to support ntfs file system)</li>
+<li>transmission-daemon</li>
+<li>minidlna</li>
+</ul>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo apt-get install samba samba-common-bin sudo apt-get install nginx sudo apt-get install nfs-kernel-server nfs-common portmap sudo apt-get install ntfs-3g # if you want ntfs sudo apt-get install transmission-daemon sudo apt-get install minidlna
+</code></pre></div><h2 id="samba">samba</h2>
+<p>Append /etc/samba/smb.conf</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">[public] path = /path/to/public/folder browseable = yes writeable = yes guest ok = no read only = no
+</code></pre></div><h2 id="minidlna">minidlna</h2>
+<p>Edit /etc/minidlna.conf</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">media_dir=/path/to/public/folder media_dir=V,/path/to/public/videos/folder media_dir=A,/path/to/public/music/folder media_dir=P,/path/to/public/pictures/folder friendly_name=rpi
+</code></pre></div><h2 id="transmission-daemon">transmission-daemon</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">mkdir -p /opt/torr sudo chown -R debian-transmission /opt/torr cp /etc/transmission-daemon/settings.json /etc/transmission-daemon/settings_template.json
+</code></pre></div><p>Edit /etc/transmission-daemon/settings.json</p>
+<p>Change the value of <em>download-dir</em> field to /opt/torr</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{ .. &#34;download-dir&#34;: &#34;/opt/torr&#34;, .. }
+</code></pre></div><h2 id="time-to-test">Time to test!</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo service samba stop sudo service samba start sudo service minidlna stop sudo service minidlna start sudo service transmission-daemon stop sudo service transmission-daemon start
+</code></pre></div><p>To test if transmission daemon is running, open http://rpi_ip_addr:9091/transmission/web/</p>
+<p>IP address of devices keep changing and hence it is difficult to access it with IP address. We can solve this problem by using the .local domain. For this we need avahi-daemon and tweak the hosts file</p>
+<h2 id="avahi-daemon">avahi-daemon</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo apt-get install avahi-daemon
+</code></pre></div><p>Edit /etc/init.d/hostname</p>
+<p>Change</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">127.0.1.1 raspberrypi127.0.1.1 [new name here]
+</code></pre></div><p>Reboot rpi</p>
+<p>Now you should be able to access your raspberrypi using the URL <a href="http://host_name.local/">http://host_name.local</a></p>
+<p>For example, <a href="http://raspberrypi.local/">http://raspberrypi.local</a></p>
+<p>PS: Most of the times <em>minidlna</em> does not refresh the collection in the specified folders. We need to explicitly run the following command</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">sudo minidlna -R sudo service minidlna restart
+</code></pre></div><p>This problem might be because of the inotify functionality of the linux kernel. It has to be enabled by the kernel. A solution is posted <a href="http://stackoverflow.com/questions/5180409/why-minidlna-not-refreshing-database">here</a></p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="http://www.naspberrypi.com/">NASpberrypi</a></li>
+<li><a href="http://www.ryukent.com/2013/09/a-local-url-instead-of-an-ip-address-for-your-raspberry-pi/">Avahi stuff</a></li>
+</ul>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/technology">technology</a></li>
+							
+							<li><a href="/tags/dlna">dlna</a></li>
+							
+							<li><a href="/tags/raspberrypi">raspberrypi</a></li>
+							
+							<li><a href="/tags/media">media</a></li>
+							
+							<li><a href="/tags/server">server</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71863978-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

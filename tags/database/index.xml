@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>database on Raghotham Sripadraj</title>
+    <link>https://raghothams.github.io/tags/database/</link>
+    <description>Recent content in database on Raghotham Sripadraj</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright notice</copyright>
+    <lastBuildDate>Tue, 13 May 2014 19:58:42 +0530</lastBuildDate>
+    
+	<atom:link href="https://raghothams.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Database Triggers</title>
+      <link>https://raghothams.github.io/posts/database-triggers/</link>
+      <pubDate>Tue, 13 May 2014 19:58:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/posts/database-triggers/</guid>
+      <description>Database trigger is an event that can occur after or before a statement is executed or a row is modified / inserted / deleted. This can be used to perform any task before or after certain occurrence of an event in the database.
+I was curious about this concept from a very long time and wanted to check it out.
+I wanted to try an automation by creating a trigger function.</description>
+    </item>
+    
+  </channel>
+</rss>

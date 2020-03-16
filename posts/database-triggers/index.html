@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Database Triggers - Raghotham Sripadraj</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Database Triggers" />
+<meta property="og:description" content="Database triggers for dummies" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raghothams.github.io/posts/database-triggers/" />
+<meta property="article:published_time" content="2014-05-13T19:58:42+05:30" />
+<meta property="article:modified_time" content="2014-05-13T19:58:42+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Database Triggers"/>
+<meta name="twitter:description" content="Database triggers for dummies"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://raghothams.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://raghothams.github.io/">
+				<img src="https://www.dropbox.com/s/1ie2nedgkaoaf1h/myAvatar.svg?raw=1" alt="Raghotham Sripadraj" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://raghothams.github.io/">Raghotham Sripadraj</a></h1>
+	<div class="site-description"><p></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/raghothams" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/raghothams" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">13</span>
+							<span class="rest">May 2014</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Database Triggers</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p>Database trigger is an event that can occur after or before a statement is executed or a row is modified / inserted / deleted. This can be used to perform any task before or after certain occurrence of an event in the database.</p>
+<p>I was curious about this concept from a very long time and wanted to check it out.</p>
+<p>I wanted to try an automation by creating a trigger function.</p>
+<p>Trigger function in PostgreSQL is a kind of function to which special variables are passed — NEW, OLD etc. More on trigger functions — <a href="http://www.postgresql.org/docs/9.3/static/plpgsql-trigger.html">here</a></p>
+<p>NEW — variable sent to trigger function when the trigger is INSERT / UPDATE. This variable will contain the new row to be inserted / updated.</p>
+<p>OLD — variable sent to trigger function when the trigger is DELETE. This variable will contain the row to be deleted.</p>
+<p>To try out trigger functions I created three tables posts, groups and user_posts. I wanted to try an insert automation, for example, on inserting a row into posts table, i wanted the DB to automatically insert rows into user_posts table. For this we need a trigger function like this :</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">CREATE FUNCTION update_user_post_association() 
+returns TRIGGER language plpgsql AS $_$ 
+DECLARE row user_groups%rowtype; 
+begin 
+  FOR row IN 
+  SELECT   * 
+  FROM   PUBLIC.user_groups 
+  WHERE  group_id = new.group_id 
+  loop 
+  EXECUTE &#39;INSERT INTO public.user_posts VALUES ($1, $2, 1)&#39; using row.user_id, 
+    new.id; 
+end 
+loop; 
+return new; 
+end; 
+$_$;
+</code></pre></div><p>In the example we do the following steps:</p>
+<ul>
+<li>get all the users of the group</li>
+<li>loop on the users</li>
+<li>perform an insert using the available data</li>
+</ul>
+<p>It is important to note that the trigger function here uses dynamic SQL statement which is slightly different from a normal SQL statement. When using variables in an SQL statement it is always good to use placeholders like $1, $2 and use the USING keyword to pass the variables.</p>
+<p>Now that we have the trigger function, we need to tell the DB when to run this function. For this, we create a trigger</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">CREATE TRIGGER populate_users after 
+INSERT 
+OR 
+UPDATE 
+ON posts FOR each row 
+EXECUTE PROCEDURE 
+  update_user_post_association();
+</code></pre></div><p>Now the DB executes the trigger function on every insert into the posts table.</p>
+<p><strong>Note</strong> : It is not a good idea to perform insert(s) in the trigger function because it may reduce the efficiency of the DB due to multiple inserts. When the DB is under heavy load, multiple inserts inside the trigger function might become slow and hence, the DB might start to queue operations.</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/technology">technology</a></li>
+							
+							<li><a href="/tags/database">database</a></li>
+							
+							<li><a href="/tags/triggers">triggers</a></li>
+							
+							<li><a href="/tags/postgres">postgres</a></li>
+							
+							<li><a href="/tags/sql">SQL</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71863978-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

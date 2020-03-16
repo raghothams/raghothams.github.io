@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>server on Raghotham Sripadraj</title>
+    <link>https://raghothams.github.io/tags/server/</link>
+    <description>Recent content in server on Raghotham Sripadraj</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright notice</copyright>
+    <lastBuildDate>Sun, 07 Sep 2014 19:58:42 +0530</lastBuildDate>
+    
+	<atom:link href="https://raghothams.github.io/tags/server/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DLNA on RaspberryPi</title>
+      <link>https://raghothams.github.io/posts/dlna-raspberrypi/</link>
+      <pubDate>Sun, 07 Sep 2014 19:58:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/posts/dlna-raspberrypi/</guid>
+      <description>I always wanted to setup a media server at home for the following reasons:
+ Reduce redundancy — having multiple copies of media for different devices like phone, tablet, smart TV etc Ease of use — no need to copy files to and from devices to play media (mostly Pink Floyd and movies) One stop shop with transmission integration — download files on RaspberryPi and they appear on the media server  The easiest solution was to turn my RaspberryPi into a DLNA server.</description>
+    </item>
+    
+  </channel>
+</rss>

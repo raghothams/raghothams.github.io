@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>MongoDB and PySPark 2.1.0 - Raghotham Sripadraj</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="MongoDB and PySPark 2.1.0" />
+<meta property="og:description" content="Photo by Thomas Kvistholt on Unsplash
+The common problem with using the latest release of any framework is that there are no or very few adopters, docs are not updated or point to older versions. We encountered a similar problem while integrating MongoDB driver with Apache Spark 2.X. Majority of the library docs available as of today work only with spark 1.5&#43;.
+All we wanted to do was to create a dataframe by reading a mongodb collection." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raghothams.github.io/posts/mongodb-pyspark/" />
+<meta property="article:published_time" content="2018-12-12T19:58:42+05:30" />
+<meta property="article:modified_time" content="2018-12-12T19:58:42+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MongoDB and PySPark 2.1.0"/>
+<meta name="twitter:description" content="Photo by Thomas Kvistholt on Unsplash
+The common problem with using the latest release of any framework is that there are no or very few adopters, docs are not updated or point to older versions. We encountered a similar problem while integrating MongoDB driver with Apache Spark 2.X. Majority of the library docs available as of today work only with spark 1.5&#43;.
+All we wanted to do was to create a dataframe by reading a mongodb collection."/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://raghothams.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://raghothams.github.io/">
+				<img src="https://www.dropbox.com/s/1ie2nedgkaoaf1h/myAvatar.svg?raw=1" alt="Raghotham Sripadraj" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://raghothams.github.io/">Raghotham Sripadraj</a></h1>
+	<div class="site-description"><p></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/raghothams" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/raghothams" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">12</span>
+							<span class="rest">Dec 2018</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">MongoDB and PySPark 2.1.0</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p><img src="https://miro.medium.com/max/12032/0*MCkyZbE6rJRiuQA7" alt="img"></p>
+<p><em>Photo by <a href="https://unsplash.com/@freeche?utm_source=medium&amp;utm_medium=referral">Thomas Kvistholt</a> on <a href="https://unsplash.com/?utm_source=medium&amp;utm_medium=referral">Unsplash</a></em></p>
+<p>The common problem with using the latest release of any framework is that there are no or very few adopters, docs are not updated or point to older versions. We encountered a similar problem while integrating MongoDB driver with Apache Spark 2.X. Majority of the library docs available as of today work only with spark 1.5+.</p>
+<p>All we wanted to do was to create a dataframe by reading a mongodb collection. After a lot of googling, we figured out there are two libraries that support such operation:</p>
+<ul>
+<li><a href="https://github.com/Stratio/Spark-MongoDB">Stratio’s Spark Mongo connector</a></li>
+<li><a href="https://docs.mongodb.com/spark-connector/v1.1/getting-started/">Spark Mongo connector</a></li>
+</ul>
+<p>We decided to use go ahead with the official Spark Mongo connector as it looked straightforward.</p>
+<p>With spark 2.X, we can specify the <a href="https://blog.unnati.xyz/spark-2-x-external-packages-f1231dc8d7a9#.ss8v8antu">third party package</a> / library in the command line for spark to add it as a dependency using the <em>packages</em> option. Spark checks if the given dependency is resolved, else it pulls the library from the central maven repository.</p>
+<p>Starting Spark 2.X, we do not need to create SparkContext and SQLContext to read a dataframe. We can use <strong>SparkSession</strong> API to easily read a dataframe or perform any SparkSQL operation.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">from pyspark.sql import SparkSessionspark = SparkSession.builder.appName(“demography mapper”).getOrCreate()
+</code></pre></div><p>To read a data frame from a mongodb collection, we need to specify a couple of options telling spark the data format and the collection details</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">df_user = spark.read.format(&#34;com.mongodb.spark.sql.DefaultSource&#34;)\
+.option(&#34;spark.mongodb.input.uri&#34;, &#34;mongodb://localhost:27017/raw.user&#34;).load()
+</code></pre></div><p>This is now a standard spark data frame and we can use any of the dataframe operations or SQL operations on it.</p>
+<p>You can find the link to the complete script here — <a href="https://gist.github.com/raghothams/6183df0e60ed62989be448795360d27b">sample demography mapper</a></p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/technology">technology</a></li>
+							
+							<li><a href="/tags/spark">spark</a></li>
+							
+							<li><a href="/tags/mongodb">mongodb</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71863978-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

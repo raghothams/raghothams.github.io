@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Machine Learning - Raghotham Sripadraj</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Machine Learning" />
+<meta property="og:description" content="How I started my machine learning journey" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raghothams.github.io/posts/machine-learning/" />
+<meta property="article:published_time" content="2014-06-11T19:58:42+05:30" />
+<meta property="article:modified_time" content="2014-06-11T19:58:42+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Machine Learning"/>
+<meta name="twitter:description" content="How I started my machine learning journey"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://raghothams.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://raghothams.github.io/">
+				<img src="https://www.dropbox.com/s/1ie2nedgkaoaf1h/myAvatar.svg?raw=1" alt="Raghotham Sripadraj" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://raghothams.github.io/">Raghotham Sripadraj</a></h1>
+	<div class="site-description"><p></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/raghothams" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/raghothams" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">11</span>
+							<span class="rest">Jun 2014</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Machine Learning</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p>I had zero knowledge about machine learning, but wanted to explore. I took up <a href="http://lshtc.iit.demokritos.gr/">Large Scale Hierarchical Text Classification</a> (LSHTC) as my Masters dissertation project, so that I have a good scenario to start Machine Learning</p>
+<p>The first thing I wanted to know was the format of data provided by LSHTC. Turned out that it was SVM format. The training data and test data had the following format</p>
+<p>label,label,label… feature:value feature:value</p>
+<p>The <strong>label</strong> indicates the category the document belongs to.</p>
+<p>The <strong>feature:value</strong> vector represents a word and its weight (<strong>TF</strong>) in the document.</p>
+<h2 id="choice-of-programming-language">Choice of programming language</h2>
+<p>Had to make a choice between Java and Python</p>
+<p>I chose Python for the following reasons:</p>
+<ol>
+<li><strong>Huge set of Machine Learning libraries</strong> — given that I was a beginner, this made a lot of impact. More libraries, more documentation, more examples =&gt; more experiments and better understanding</li>
+<li>Most of the Machine Learning this day is done with python</li>
+<li>Less cumbersome to try out a scenario — given that python is more of a scripting language, experiments could be made quickly especially with <strong>IPYTHON</strong></li>
+<li>Also the hype around it these days :)</li>
+</ol>
+<h2 id="libraries">Libraries</h2>
+<ol>
+<li><a href="http://scikit-learn.org/stable/">scikit-learn</a> — massive collection of different algorithms for Regression, Classification, Clustering, Dimension reduction, Model section pipelining etc</li>
+<li><a href="http://mlpy.sourceforge.net/">mlpy</a> — similar to scikit-learn but offers a smaller set</li>
+<li><a href="http://graphlab.com/">graphlab</a> — more of a recommendation engine</li>
+<li><a href="http://spark.apache.org/">Spark</a> — very good parallel ML framework but still in its early stage. Does not offer many algorithms</li>
+</ol>
+<p>I started off with sci-kit. It offeres a huge range of libraries &amp; algorithms. I then had to do a lot of reading about the basic stuff in classification like Hyper planes, linear and non linear classification, K-Nearest Neighbours and Support Vector Machine (SVM) — What SVM is and why is it used?</p>
+<p><a href="http://nlp.stanford.edu/IR-book/pdf/irbookonlinereading.pdf">The Stanford NLP</a> book helped me a lot in understanding the basics of Classification</p>
+<h2 id="algorithms">Algorithms</h2>
+<p>I’m an absolute beginner to Machine Learning and every algorithm I look at seems to be the right one. But only after experimenting each of them you know which is the best fit and why.</p>
+<p>The problem I was solving was a medium scale data with 250,000 records of test data and 2 million records of training data. Both training and test data large number of features.</p>
+<h3 id="k-nearest-neighbour">K Nearest Neighbour</h3>
+<p>Started of the first trial using K-nearest neighbour algorithm. Turns out, this is a very good algorithm but doesn’t scale well with larger data set. There are a number of flavors of kNN which reduces the dimenion of feature vector like — KD Tree, Ball Tree. But still doesn’t help much while running larger dataset which &gt; 10000 records Also I used to frequently get the error “Core dumped” when I tried plain kNN and kNN with <strong>chi2</strong> best selection. Still figuring out the reason; feel it doesn’t scale for larger dataset. But I get the same error for smaller datasets of 100 records which is weird and hints me that I might be doing something wrong! After reading a few articles I came to a conclusion that it is better to use SVM for large datasets.</p>
+<h3 id="support-vector-machines-svm">Support Vector Machines (SVM)</h3>
+<p>Support Vector Machine is one of the fast and efficient learning algorithms for classification and regression. Works well on medium sized datasets. Linear SVM does a linear classification. We can define custom kernels for SVM. The SVM library in sci-kit offers commonly used kernels like</p>
+<ul>
+<li>linear</li>
+<li>polynomial</li>
+<li>Radial Basis Function (rbf)</li>
+<li>sigmoid</li>
+</ul>
+<p>The result with RBF kernel turned out to be bad. The prediction was pretty bad, got the same label predition for most of the test data.</p>
+<p>I switched to linear SVM and the results turned out to be quite decent.</p>
+<h2 id="scaling">Scaling</h2>
+<p>Given the problem is about Large Scale classification, scaling the algorithm to cater to large datasets is very important!</p>
+<p>As of today, algorithms in sci-kit library run on single core. This turns out to be bad when running prediction on large datasets.</p>
+<p>The way out is multicore processing by splitting the tasks. We can divide the task into sub tasks and run them on different cores. In my case, I split the test data into smaller subsets and predict them as different jobs, utilizing multiple cores. Sci-kit also provides a job processing library called joblib which enables the above mentioned process.</p>
+<p>Soon we will run into problem having multiple copies of the training data on each job doing the prediction. To overcome this, joblib provides <strong>memory caching</strong> of functions. This helps us not to create copies, rather share the memory across all jobs. The problem seems to be solved, but it will not work when we have large enough dataset that needs to be run on different machines!</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/technology">technology</a></li>
+							
+							<li><a href="/tags/machine-learning">machine learning</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71863978-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

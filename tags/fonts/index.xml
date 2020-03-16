@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fonts on Raghotham Sripadraj</title>
+    <link>https://raghothams.github.io/tags/fonts/</link>
+    <description>Recent content in fonts on Raghotham Sripadraj</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright notice</copyright>
+    <lastBuildDate>Sun, 16 Dec 2018 19:58:42 +0530</lastBuildDate>
+    
+	<atom:link href="https://raghothams.github.io/tags/fonts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deep Learning for Fonts</title>
+      <link>https://raghothams.github.io/posts/deep-learning-fonts/</link>
+      <pubDate>Sun, 16 Dec 2018 19:58:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/posts/deep-learning-fonts/</guid>
+      <description>2016, It was a sunny morning in London, Nischal &amp;amp; I were roaming around the Westminster Bridge.
+We were speaking at PyData London that year and the topic was Deep Learning
+Of all the things, there was this one thing we were super curious to know — Which is the font on the boards of the buses?
+Picture courtesy — Wikipedia
+This was one of the most legible, crisp, clean font we had ever seen!</description>
+    </item>
+    
+  </channel>
+</rss>

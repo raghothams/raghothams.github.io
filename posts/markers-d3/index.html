@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Markers with D3 - Raghotham Sripadraj</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Markers with D3" />
+<meta property="og:description" content="Disecting SVG markers with D3" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raghothams.github.io/posts/markers-d3/" />
+<meta property="article:published_time" content="2015-01-22T19:58:42+05:30" />
+<meta property="article:modified_time" content="2015-01-22T19:58:42+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Markers with D3"/>
+<meta name="twitter:description" content="Disecting SVG markers with D3"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://raghothams.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://raghothams.github.io/">
+				<img src="https://www.dropbox.com/s/1ie2nedgkaoaf1h/myAvatar.svg?raw=1" alt="Raghotham Sripadraj" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://raghothams.github.io/">Raghotham Sripadraj</a></h1>
+	<div class="site-description"><p></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/raghothams" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/raghothams" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">22</span>
+							<span class="rest">Jan 2015</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Markers with D3</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p>Every time I look at the examples page of D3, I’m simply go…</p>
+<!-- raw HTML omitted -->
+<p><img src="https://miro.medium.com/max/600/0*28shRzwc8D1wLOWg.gif" alt="img"></p>
+<p><a href="https://twitter.com/mbostock">@mbostock</a> has transformed how visualizations are created for web.</p>
+<p>Today I learnt how to use svg markers with D3. I was using force layout to analyze graphs, just like this <a href="http://bl.ocks.org/mbostock/4062045">example</a>. But I wanted a directed graph!</p>
+<!-- raw HTML omitted -->
+<p><img src="https://miro.medium.com/max/1220/0*M01Zqf8i_yOBmc5G.png" alt="img"></p>
+<p>Later, I came across another <a href="http://bl.ocks.org/d3noob/5141278">example</a> which had direction. I was happy because a ready-made solution solved the problem. But soon I ran into problem as I wanted a custom tree like structure with every path being directed i.e I wanted the arrow markers at the end of each path.</p>
+<p>I went back to the ready-made solution and had a look at the part of code which was generating the arrows.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">// build the arrow. 
+svg.append(&#34;svg:defs&#34;).selectAll(&#34;marker&#34;) 
+// Different link/path types can be defined here .data([&#34;end&#34;]) 
+// This section adds in the arrows 
+//this makes the id as &#39;end&#39;, coming from data 
+.attr(&#34;id&#34;, String) .enter().append(&#34;svg:marker&#34;) .attr(&#34;viewBox&#34;, &#34;0 -5 10 10&#34;) .attr(&#34;refX&#34;, 15) .attr(&#34;refY&#34;, -1.5) .attr(&#34;markerWidth&#34;, 6) .attr(&#34;markerHeight&#34;, 6) .attr(&#34;orient&#34;, &#34;auto&#34;) .append(&#34;svg:path&#34;) .attr(&#34;d&#34;, &#34;M0,-5L10,0L0,5&#34;);
+</code></pre></div><p><em>Thanks to</em> <a href="https://gist.github.com/d3noob"><em>d3noob</em></a> <em>for adding comments to the code</em></p>
+<p>The above code just creates an arrow. This can be added to any element later by adding the below code as its attribute.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">svgElement.attr(&#34;marker-end&#34;, &#34;url(#end)&#34;);
+</code></pre></div><p>So what is the magic happening here? Lets look closely at what we are doing while building the arrow.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">svg.append(&#34;svg:defs&#34;).selectAll(&#34;marker&#34;) .data([&#34;end&#34;]) .attr(&#34;id&#34;, String) .enter().append(&#34;svg:marker&#34;) .attr(&#34;viewBox&#34;, &#34;0 -5 10 10&#34;) .attr(&#34;refX&#34;, 15) .attr(&#34;refY&#34;, -1.5) .attr(&#34;markerWidth&#34;, 6) .attr(&#34;markerHeight&#34;, 6) .attr(&#34;orient&#34;, &#34;auto&#34;) .append(&#34;svg:path&#34;) .attr(&#34;d&#34;, &#34;M0,-5L10,0L0,5&#34;);
+</code></pre></div><p>We are creating an <strong>SVG def</strong> which will generate the arrow head. SVG defs are a way of defining graphical objects which can be applied to elements. The definition can be anything like defining a marker or defining a gradient as specified in <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs">MDN example</a>. Now that we have created a definition, this can be easily applied to any element.</p>
+<p>We will use the defined marker and apply it to every path we have by altering the path’s attribute</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">svg.selectAll(&#34;.link&#34;) .attr(&#34;marker-end&#34;, &#34;url(#end)&#34;);
+</code></pre></div><p>We use the marker-end attribute and assign the definition id as its value (in our case it is #end). <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/marker-end">marker-end</a> attribute is used to add arrowhead or any other object at the final vertex of the path.</p>
+<p>Now that we have added arrows to the path, lets see the output</p>
+<p><img src="https://miro.medium.com/max/60/0*MlEHtc62uvCgtVj3.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1670/0*MlEHtc62uvCgtVj3.png" alt="img"></p>
+<p>A peek into DOM</p>
+<!-- raw HTML omitted -->
+<p><img src="https://miro.medium.com/max/1526/0*yZGJhEUnRCtuQTVO.png" alt="img"></p>
+<!-- raw HTML omitted -->
+<p><img src="https://miro.medium.com/max/1280/0*Eaa1i2xPty8LlbFa.jpg" alt="img"></p>
+<p><em>Thanks to mbostock, d3noob, MDN</em></p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/d3">d3</a></li>
+							
+							<li><a href="/tags/markers">markers</a></li>
+							
+							<li><a href="/tags/svg">svg</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71863978-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

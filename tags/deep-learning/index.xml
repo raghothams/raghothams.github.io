@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>deep learning on Raghotham Sripadraj</title>
+    <link>https://raghothams.github.io/tags/deep-learning/</link>
+    <description>Recent content in deep learning on Raghotham Sripadraj</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright notice</copyright>
+    <lastBuildDate>Sun, 16 Dec 2018 19:58:42 +0530</lastBuildDate>
+    
+	<atom:link href="https://raghothams.github.io/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deep Learning for Fonts</title>
+      <link>https://raghothams.github.io/posts/deep-learning-fonts/</link>
+      <pubDate>Sun, 16 Dec 2018 19:58:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/posts/deep-learning-fonts/</guid>
+      <description>2016, It was a sunny morning in London, Nischal &amp;amp; I were roaming around the Westminster Bridge.
+We were speaking at PyData London that year and the topic was Deep Learning
+Of all the things, there was this one thing we were super curious to know — Which is the font on the boards of the buses?
+Picture courtesy — Wikipedia
+This was one of the most legible, crisp, clean font we had ever seen!</description>
+    </item>
+    
+    <item>
+      <title>Word Embedding</title>
+      <link>https://raghothams.github.io/posts/word-embeddings/</link>
+      <pubDate>Sat, 10 Oct 2015 19:58:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/posts/word-embeddings/</guid>
+      <description>Word embedding is a technique of converting words to vectors of a high dimension space. In simple terms, in each dimension, we group words based on a particular aspect — gender, colour etc., and score the words based on similarity in that space.
+ For example — “I have a red car, maroon shirt and a grey bicycle”
+ One of the dimensions can represent colour. Red, maroon and grey are assigned similar scores.</description>
+    </item>
+    
+  </channel>
+</rss>

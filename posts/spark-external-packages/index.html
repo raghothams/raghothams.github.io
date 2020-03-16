@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Spark 2.x External Packages - Raghotham Sripadraj</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Spark 2.x External Packages" />
+<meta property="og:description" content="Pain of bleeding edge" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raghothams.github.io/posts/spark-external-packages/" />
+<meta property="article:published_time" content="2018-12-11T19:58:42+05:30" />
+<meta property="article:modified_time" content="2018-12-11T19:58:42+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spark 2.x External Packages"/>
+<meta name="twitter:description" content="Pain of bleeding edge"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://raghothams.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://raghothams.github.io/">
+				<img src="https://www.dropbox.com/s/1ie2nedgkaoaf1h/myAvatar.svg?raw=1" alt="Raghotham Sripadraj" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://raghothams.github.io/">Raghotham Sripadraj</a></h1>
+	<div class="site-description"><p></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/raghothams" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/raghothams" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">11</span>
+							<span class="rest">Dec 2018</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Spark 2.x External Packages</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p><img src="https://miro.medium.com/max/5536/0*duDTP2i7pYMwvMNu" alt="img"></p>
+<p><em>Photo by <a href="https://unsplash.com/@mbaumi?utm_source=medium&amp;utm_medium=referral">Mika Baumeister</a> on <a href="https://unsplash.com/?utm_source=medium&amp;utm_medium=referral">Unsplash</a></em></p>
+<p>The bane of using bleeding edge technology is very less or hidden information of new features in the latest version. We at <a href="http://unnati.xyz/">Unnati</a> use bleeding edge releases of many data science tools for various research and production systems. In this post we explain how to add external <code>jars</code> to Apache Spark 2.x application.</p>
+<p>Starting Spark 2.x, we can use the <code>--package</code> option to pass additional jars to <code>spark-submit</code>. Spark will look through the local <code>ivy2</code> repository for the jar, if it is missing, it will pull the dependency from the central maven server.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$SPARK_HOME/bin/spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.10:2.0.0 &lt;py-file&gt;
+</code></pre></div><p>In the above example, we are adding <code>mongodb-spark</code> connector. This works perfectly fine. However, there are scenarios where spark is used as part of the python application. In this case, we will use <code>SparkContext</code> to specify the configuration.</p>
+<blockquote>
+<p>There is no way to set packages option using <code>*SparkConf*</code></p>
+</blockquote>
+<p>We need to use the <code>spark-defaults.conf</code> to specify the external jar. Add the following to the file</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">spark.jars.packages               org.mongodb.spark:mongo-spark-connector_2.10:2.0.0
+</code></pre></div><p>Now run your pyspark application as usual</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">python &lt;py-file&gt;
+</code></pre></div><!-- raw HTML omitted -->
+<p><img src="https://miro.medium.com/max/960/1*rKwbLz-eyIHU7OBeKaLXeA.gif" alt="img"></p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/technology">technology</a></li>
+							
+							<li><a href="/tags/spark">spark</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71863978-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

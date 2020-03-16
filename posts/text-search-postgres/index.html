@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Text Search on PostgreSQL - Raghotham Sripadraj</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Text Search on PostgreSQL" />
+<meta property="og:description" content="Introduction to text search on PostgreSQL" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raghothams.github.io/posts/text-search-postgres/" />
+<meta property="article:published_time" content="2014-05-31T19:58:42+05:30" />
+<meta property="article:modified_time" content="2014-05-31T19:58:42+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Text Search on PostgreSQL"/>
+<meta name="twitter:description" content="Introduction to text search on PostgreSQL"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://raghothams.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://raghothams.github.io/">
+				<img src="https://www.dropbox.com/s/1ie2nedgkaoaf1h/myAvatar.svg?raw=1" alt="Raghotham Sripadraj" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://raghothams.github.io/">Raghotham Sripadraj</a></h1>
+	<div class="site-description"><p></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/raghothams" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/raghothams" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">31</span>
+							<span class="rest">May 2014</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Text Search on PostgreSQL</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p>PostgreSQL has out of box support for text search.</p>
+<p>Assume we have a table of documents:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">CREATE TABLE documents 
+  ( 
+     id  SERIAL NOT NULL, 
+     doc TEXT 
+  ) 
+
+INSERT INTO documents 
+            (doc) 
+VALUES      (&#34;lorem ipsum .....&#34;); 
+
+INSERT INTO documents 
+            (doc) 
+VALUES      (&#34;quick brown fox .....&#34;);
+</code></pre></div><p>Output:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">id | doc -----------------
+0 | &#34;Lorem ipsum .....&#34; 
+1 | &#34;Quick brown fox ...&#34; 
+</code></pre></div><p>A simple text search is a basic requirement in any system. This can be done using tsvector and tsquery types in PostgreSQL.</p>
+<p><a href="http://raghothams.svbtle.com/www.postgresql.org/docs/9.1/static/datatype-textsearch.html"><strong>tsvector</strong></a> gives us the list of lexemes for any given text. <a href="http://raghothams.svbtle.com/www.postgresql.org/docs/9.1/static/datatype-textsearch.html"><strong>tsquery</strong></a> helps facilitate the search by creating lexemes for search terms, combine search terms / lexemes and compare with tsvector for result.</p>
+<p>The to_tsvector method processes text by removing stop words, stem and normalize words so that they can be used with different variants of the word. For example, <strong>precision</strong> would become <strong>precis</strong> and <strong>running</strong> would become <strong>run</strong></p>
+<p>On every insert of a document, we need to get the normalized text of the document and add it to the normalized text column. For this we need to create a new column of type tsvector.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ALTER TABLE documents ADD COLUMN tsv TYPE tsvector;
+</code></pre></div><p>Next, we need to create a trigger function that will update the <strong>tsv</strong> column on every insert</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">CREATE TRIGGER tsvupdate before 
+INSERT 
+OR 
+UPDATE 
+ON documents FOR each row 
+EXECUTE PROCEDURE 
+  tsvector_update_trigger(tsv, &#39;pg.catalog.english&#39;, doc);
+</code></pre></div><p>tsvector_update_trigger() is built-in method which takes arguments -</p>
+<ol>
+<li>column to store the normalized text</li>
+<li>language of the text (because removing stop words and stemming is specific to a language)</li>
+<li>column_to_read_text_from</li>
+<li>column_to_read_text_from (takes multiple columns as input)</li>
+</ol>
+<p>With data populated inside the documents table, we can perform a simple text search using the query:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">WITH q AS 
+( 
+       SELECT To_tsquery(&#39;brown:*&#39;) AS query) 
+SELECT id, 
+       doc, 
+       tsv 
+FROM   documents, 
+       q 
+WHERE  q.query @@ documents.tsv;
+</code></pre></div><p>The to_tsquery function will convert the input text to tsquery type which can be used to do logical operations — &amp; (AND), | (OR), ! (NOT), with lexemes and perform <strong>prefix matching</strong> using “:*”</p>
+<p>The @@ operator checks if the tsvector matches tsquery</p>
+<p>So the above query would return us documents which contain “brown”</p>
+<p><img src="https://miro.medium.com/max/60/0*uGKEZdywYqOvLb89.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1878/0*uGKEZdywYqOvLb89.png" alt="img"></p>
+<h1 id="limitation">Limitation:</h1>
+<p><em>tsvector</em> and <em>tsquery</em> will only help us find words from a given text but <strong>not substring matching</strong>. For substring matching we will have to use the pg_trgm extension (Trigram based text search). The pg_trgm extension can perform LIKE operation on text fields.</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/technology">technology</a></li>
+							
+							<li><a href="/tags/postgres">postgres</a></li>
+							
+							<li><a href="/tags/text">text</a></li>
+							
+							<li><a href="/tags/search">search</a></li>
+							
+							<li><a href="/tags/sql">SQL</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71863978-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

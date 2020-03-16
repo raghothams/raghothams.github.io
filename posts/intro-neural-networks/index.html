@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Introduction to Neural Networks - Raghotham Sripadraj</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Introduction to Neural Networks" />
+<meta property="og:description" content="Artificial Neural Networks (ANNs) have totally changed what computers are capable of learning. Though neural networks date back 1940s, we are seeing an astonishing amount of increase of its applications in the recent 5–10 years.
+Artificial neural networks are modeled on the functioning of the human brain, where the input is converted into output based on a series of transformations. Though they are capable of achieving complex tasks, the way they work is fairly straight forward." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raghothams.github.io/posts/intro-neural-networks/" />
+<meta property="article:published_time" content="2015-10-06T19:58:42+05:30" />
+<meta property="article:modified_time" content="2015-10-06T19:58:42+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Introduction to Neural Networks"/>
+<meta name="twitter:description" content="Artificial Neural Networks (ANNs) have totally changed what computers are capable of learning. Though neural networks date back 1940s, we are seeing an astonishing amount of increase of its applications in the recent 5–10 years.
+Artificial neural networks are modeled on the functioning of the human brain, where the input is converted into output based on a series of transformations. Though they are capable of achieving complex tasks, the way they work is fairly straight forward."/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://raghothams.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://raghothams.github.io/">
+				<img src="https://www.dropbox.com/s/1ie2nedgkaoaf1h/myAvatar.svg?raw=1" alt="Raghotham Sripadraj" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://raghothams.github.io/">Raghotham Sripadraj</a></h1>
+	<div class="site-description"><p></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/raghothams" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/raghothams" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">06</span>
+							<span class="rest">Oct 2015</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Introduction to Neural Networks</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p>Artificial Neural Networks (ANNs) have totally changed what computers are capable of learning. Though neural networks date back 1940s, we are seeing an astonishing amount of increase of its applications in the recent 5–10 years.</p>
+<p>Artificial neural networks are modeled on the functioning of the human brain, where the input is converted into output based on a series of transformations. Though they are capable of achieving complex tasks, the way they work is fairly straight forward.</p>
+<p>Three main concepts which explain the working of neural networks:</p>
+<ol>
+<li>Neuron</li>
+<li>Feed forward network</li>
+<li>Back propagation</li>
+</ol>
+<h2 id="neuron">Neuron</h2>
+<p>This is a simple computation unit which takes a single or multiple inputs and spits out an output. The function here, transforming the input to output is generally a simple logistic function. This is called an activation function.</p>
+<!-- raw HTML omitted -->
+<p><img src="https://miro.medium.com/max/1876/1*lUXzeApJfYWirwxXgWMypg.png" alt="img"></p>
+<h2 id="feed-forward-network">Feed forward network</h2>
+<p>Now that we know how a single neuron works, lets see how a simple neural network looks like.</p>
+<!-- raw HTML omitted -->
+<p><img src="https://miro.medium.com/max/2140/1*cscVFhnr2uz4puDArSOt6Q.png" alt="img"></p>
+<p>We create a network where each layer contains some number of neurons. The outputs of neurons in layer L1 are inputs to the neurons in layer L2, outputs of neurons in layer L2 are inputs to the neurons in layer L3 and so on. In the final layer, we can have a single neuron which takes input from the previous layer and outputs a value. The input to any layer is not just the output of the previous layer, rather it is the weighted output which goes as input to the next layer (these are the connections). Layer L1 is called the *<strong>input layer*</strong>, L3 is the *<strong>output layer*</strong> and L2 is the *<strong>hidden layer.*</strong> We can have more than one hidden layer.</p>
+<p>Basically, as the name suggests, we are feeding forward the outputs of a layer to the layer in front as inputs.</p>
+<p>This entire calculation from a high level can be thought of as an inception of functions. Assuming we have 4 layers in total:</p>
+<ul>
+<li>f(.) is the function for outputs in L2</li>
+<li>g(.) is the function for outputs in L3</li>
+<li>h(.) is the function for outputs in L4 (the last layer)</li>
+</ul>
+<p>then the output is nothing but *<strong>h(g(f(x)))*</strong>.</p>
+<p>Now that we know how the feed forward network works, lets try to understand the learning process.</p>
+<p>First, we feed the input layer with the inputs and assign random weights to them. The product of weights and inputs now become the input to L2 and the same is done to the subsequent layers. Finally, we get a value at the output layer which completes one forward pass.</p>
+<p>Now we compare the computed output with the actual output (target). There will be a difference between the actual and computed value, which is nothing but the error.</p>
+<p>If we think about the reason for the error, it is due to the weights we randomly assigned. It is not the right weights we need to use. The error can be minimized by changing the weight in the previous layer. Now we adjust the weights in L3 to correct the error. Changing weights in L3 means, we need to adjust the weights in L2 to accommodate the change of weights in L3 and the same process continues till the input layer. In other words, we are propagating the error back to the input layer by changing the weights.</p>
+<h3 id="this-process-of-adjusting-the-weights-in-each-layer-to-correct-the-error-is-called-back-propagation"><strong>This process of adjusting the weights in each layer to correct the error is called Back propagation.</strong></h3>
+<p>Initially, the working of back propagation might seem to be complex. But in its core it is nothing but simple derivatives.</p>
+<p><strong>References</strong></p>
+<ol>
+<li><a href="http://colah.github.io/posts/2015-08-Backprop/">http://colah.github.io/posts/2015-08-Backprop/</a></li>
+<li><a href="http://ufldl.stanford.edu/tutorial/supervised/MultiLayerNeuralNetworks/">http://ufldl.stanford.edu/tutorial/supervised/MultiLayerNeuralNetworks/</a></li>
+</ol>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/technology">technology</a></li>
+							
+							<li><a href="/tags/machine-learning">machine learning</a></li>
+							
+							<li><a href="/tags/neural-networks">neural networks</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71863978-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>
