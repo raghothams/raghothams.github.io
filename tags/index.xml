@@ -7,10 +7,46 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
-    <lastBuildDate>Mon, 20 Jan 2020 19:58:42 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 21 Mar 2020 19:58:42 +0530</lastBuildDate>
     
 	<atom:link href="https://raghothams.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>data</title>
+      <link>https://raghothams.github.io/tags/data/</link>
+      <pubDate>Sat, 21 Mar 2020 19:58:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/tags/data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>deep learning</title>
+      <link>https://raghothams.github.io/tags/deep-learning/</link>
+      <pubDate>Sat, 21 Mar 2020 19:58:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fonts</title>
+      <link>https://raghothams.github.io/tags/fonts/</link>
+      <pubDate>Sat, 21 Mar 2020 19:58:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/tags/fonts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>technology</title>
+      <link>https://raghothams.github.io/tags/technology/</link>
+      <pubDate>Sat, 21 Mar 2020 19:58:42 +0530</pubDate>
+      
+      <guid>https://raghothams.github.io/tags/technology/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>engineer</title>
@@ -27,15 +63,6 @@
       <pubDate>Mon, 20 Jan 2020 19:58:42 +0530</pubDate>
       
       <guid>https://raghothams.github.io/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>technology</title>
-      <link>https://raghothams.github.io/tags/technology/</link>
-      <pubDate>Mon, 20 Jan 2020 19:58:42 +0530</pubDate>
-      
-      <guid>https://raghothams.github.io/tags/technology/</guid>
       <description></description>
     </item>
     
@@ -63,24 +90,6 @@
       <pubDate>Mon, 06 Jan 2020 19:04:42 +0530</pubDate>
       
       <guid>https://raghothams.github.io/tags/sharing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>deep learning</title>
-      <link>https://raghothams.github.io/tags/deep-learning/</link>
-      <pubDate>Sun, 16 Dec 2018 19:58:42 +0530</pubDate>
-      
-      <guid>https://raghothams.github.io/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>fonts</title>
-      <link>https://raghothams.github.io/tags/fonts/</link>
-      <pubDate>Sun, 16 Dec 2018 19:58:42 +0530</pubDate>
-      
-      <guid>https://raghothams.github.io/tags/fonts/</guid>
       <description></description>
     </item>
     

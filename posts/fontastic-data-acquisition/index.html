@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Fontastic - Data Acquistion - Raghotham Sripadraj</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Fontastic - Data Acquistion" />
+<meta property="og:description" content="In the previous post, we spoke about why Nischal and I started Fontastic as a side project. However, a year down the line, we realized there were major learnings for us while working on the project and this could be useful to many others as well. Hence, we decided to share our learnings through a series of posts and we start with data acquistion as our first story.
+In this post we cover the various data acquisition strategies we had to experiment and their pros and cons." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raghothams.github.io/posts/fontastic-data-acquisition/" />
+<meta property="article:published_time" content="2020-03-21T19:58:42+05:30" />
+<meta property="article:modified_time" content="2020-03-21T19:58:42+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fontastic - Data Acquistion"/>
+<meta name="twitter:description" content="In the previous post, we spoke about why Nischal and I started Fontastic as a side project. However, a year down the line, we realized there were major learnings for us while working on the project and this could be useful to many others as well. Hence, we decided to share our learnings through a series of posts and we start with data acquistion as our first story.
+In this post we cover the various data acquisition strategies we had to experiment and their pros and cons."/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.github.io/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://raghothams.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://raghothams.github.io/">
+				<img src="https://www.dropbox.com/s/1ie2nedgkaoaf1h/myAvatar.svg?raw=1" alt="Raghotham Sripadraj" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://raghothams.github.io/">Raghotham Sripadraj</a></h1>
+	<div class="site-description"><p></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/raghothams" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/raghothams" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">21</span>
+							<span class="rest">Mar 2020</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Fontastic - Data Acquistion</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<p>In the previous <a href="https://raghothams.github.io/posts/deep-learning-fonts/">post</a>, we spoke about why <a href="https://nischalhp.com/">Nischal</a> and I started <a href="https://github.com/deep-learning-for-humans/fontastic">Fontastic</a> as a side project. However, a year down the line, we realized there were major learnings for us while working on the project and this could be useful to many others as well. Hence, we decided to share our learnings through a series of posts  and we start with data acquistion as our first story.</p>
+<p>In this post we cover the various data acquisition strategies we had to experiment and their pros and cons.</p>
+<h2 id="strategy-1---google-fonts">Strategy 1 - Google Fonts</h2>
+<p>Google fonts being a pretty looking site and having one of the largest collection of free fonts was our obvious first choice. Our idea was to scrape images of sample text (or specimen) for various fonts across different font weights and styles. Soon we realized that google fonts does not render images, unlike other font sites, rather is rendered as pure HTML. Below is the DOM of one of sample texts.</p>
+<p><img src="/img/google-fonts-dom.png" alt=""></p>
+<p>This mean image scraping from google fonts is out of the basket. If we need to continue with google fonts, we would need to switch to a more complicated data acquisition framework. From our previous work, we know that <strong><a href="https://github.com/puppeteer/puppeteer">Puppeteer</a></strong> would solve this by taking screenshots of the web page. This means we would have to spend a lot of time writing scripts to automatically opening Google Fonts, make some operations - font selection, fill sample text, and then save screenshot of the rendered web page. While this is doable, we thought this would unnecessarily complicate the entire process. We decided to use this as our last option in case we did not find any other way to acquire data.</p>
+<h2 id="strategy--2---font-squirrel">Strategy  2 - Font Squirrel</h2>
+<p>Font Squirrel renders sample text / font specimen as an image. This means we can scrape the image with simple tools like BeautifulSoup. We wrote a simple <a href="https://github.com/deep-learning-for-humans/fontastic/blob/e63c84a6a7806586a8c72a62a92920cf76e93713/scrape/scrape.py">python script to pull all specimen images</a>. The problems we faced with this approach were:</p>
+<ol>
+<li>Very few specimen images (5 images) available for a font style.</li>
+<li>Each image is of different dimension and aspect ratio. Even with normalizing and resize / cropping we would end up with 10 images as an upper limit.</li>
+</ol>
+<p>We would end up with a low data problem.</p>
+<h2 id="strategy-3---dafont">Strategy 3 - DaFont</h2>
+<p>We discovered that <a href="https://dafont.com">DaFont</a> is one of the easiest websites to scrape font specimen images. After detailed analysis of their URL slugs, we figured out it was a simple combination of font family and sample text passed as query parameter. Something like this - <a href="https://www.dafont.com/roboto.font?text=hello+world">https://www.dafont.com/roboto.font?text=hello+world</a></p>
+<p>One could go to the next step and pass a long sample of <em>Lorem Ipsum</em> text as param. But &hellip;</p>
+<p>This would result in text overflow and being cropped</p>
+<p><img src="/img/dafont.png" alt=""></p>
+<p>The other problem is that it renders the complete text as a single line rather than wrapping it as multi-line. As a strict outcome, we wanted our model to detect font for a multi-line text as input with the end use perspective. We wanted anyone to submit a square patch of multi-line text and our model should be robust enough to handle such data.</p>
+<p>This meant another roadblock encounter!</p>
+<p>We spent few weeks trying all other possible ways to get image data. Nischal and I discussed over multiple calls various ways that could work, but all in vain. During one of Nischal's elaborate google search sessions, he found a <a href="https://tanmayshah2015.wordpress.com/2015/12/01/synthetic-font-dataset-generation/">blog</a> that mentioned ways by which we could use <strong>PIL</strong> - pillow library in python, to use fonts installed on any machine to generate an image. This meant we could generate synthetic data!</p>
+<h2 id="strategy-4---pil-to-the-rescue">Strategy 4 - PIL to the rescue</h2>
+<p>We modified the technique mentioned in the blog to suit our image generation requirements like specific sizes and mix of font weights and layout. All we required was TTF files of any font to generate data. With this, we did the following for  every font style (font style refers to Roboto Bold Italic as an example):</p>
+<ol>
+<li>Generate high resolution 4K image of with random text and layouts.</li>
+<li>Take 10 random crops of size  256x256 px</li>
+</ol>
+<p>This means we have close to 400 image for every font depending on the number of styles and weights that are supported by that font. The below images give you a better idea of what each step does</p>
+<ol>
+<li><strong>Generate 4K image</strong></li>
+</ol>
+<!-- raw HTML omitted -->
+<p><img src="https://github.com/deep-learning-for-humans/fontastic/raw/master/imgs/pil-generated.jpg" alt=""></p>
+<ol start="2">
+<li>
+<p><strong>Random crop of 4K image</strong></p>
+<!-- raw HTML omitted -->
+<p><img src="https://github.com/deep-learning-for-humans/fontastic/raw/master/imgs/pil-rand-crop.jpg" alt=""></p>
+</li>
+<li>
+<p><strong>All random crop images</strong></p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<p><img src="https://github.com/deep-learning-for-humans/fontastic/raw/master/imgs/pil-rand-crop-all.png" alt=""></p>
+<p>What are the upsides with this approach?</p>
+<ol>
+<li>We control the input text and layout</li>
+<li>We control the font style and size</li>
+<li>We control the output image dimension</li>
+</ol>
+<p>With this, we were done with data acquisition problem with very good control over the amount of data that can be generated. In general, data acquisition is the most time consuming task in any machine learning problem. Often we see that people are only interested in building machine learning models. But from our experience of building, deploying and maintaining machine learning models at scale, we know for sure that data acquisition has to be thought through carefully as it impacts quality of models built and how well you can scale them.</p>
+<p>Stay tuned for the next part in this series, where we will talk about various deep learning models we experimented to get to the solution.</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/deep-learning">deep learning</a></li>
+							
+							<li><a href="/tags/fonts">fonts</a></li>
+							
+							<li><a href="/tags/data">data</a></li>
+							
+							<li><a href="/tags/technology">technology</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71863978-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>
