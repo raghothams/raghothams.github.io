@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>data on Raghotham Sripadraj</title>
-    <link>https://raghothams.github.io/tags/data/</link>
+    <link>https://raghothams.in/tags/data/</link>
     <description>Recent content in data on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Sat, 21 Mar 2020 19:58:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.github.io/tags/data/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.in/tags/data/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Fontastic - Part I</title>
-      <link>https://raghothams.github.io/posts/fontastic-data-acquisition/</link>
+      <link>https://raghothams.in/posts/fontastic-data-acquisition/</link>
       <pubDate>Sat, 21 Mar 2020 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.github.io/posts/fontastic-data-acquisition/</guid>
+      <guid>https://raghothams.in/posts/fontastic-data-acquisition/</guid>
       <description>In the previous post, we spoke about why Nischal and I started Fontastic as a side project. However, a year down the line, we realized there were major learnings for us while working on the project and this could be useful to many others as well. Hence, we decided to share our learnings through a series of posts and we start with data acquistion as our first story.
 In this post we cover the various data acquisition strategies we had to experiment and their pros and cons.</description>
     </item>

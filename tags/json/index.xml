@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>json on Raghotham Sripadraj</title>
-    <link>https://raghothams.github.io/tags/json/</link>
+    <link>https://raghothams.in/tags/json/</link>
     <description>Recent content in json on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Sun, 26 Apr 2015 19:58:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.github.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.in/tags/json/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Parsing JSON in Scala</title>
-      <link>https://raghothams.github.io/posts/parsing-json-scala/</link>
+      <link>https://raghothams.in/posts/parsing-json-scala/</link>
       <pubDate>Sun, 26 Apr 2015 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.github.io/posts/parsing-json-scala/</guid>
+      <guid>https://raghothams.in/posts/parsing-json-scala/</guid>
       <description>Introduction I started a side project on Scala with a group of friends (noobs in scala). We chose Scala because it is well known for type safety and functional programming with support for OOP. One of the important parts of the project was speaking to a REST API which returned JSON responses.
 We began our hunt for efficient JSON parsers on scala and soon we were flooded with libraries:
  spray-json jerkson jackson json4s jacksMapper  With so many options, we were confused!</description>

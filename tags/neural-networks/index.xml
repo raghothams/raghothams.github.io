@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>neural networks on Raghotham Sripadraj</title>
-    <link>https://raghothams.github.io/tags/neural-networks/</link>
+    <link>https://raghothams.in/tags/neural-networks/</link>
     <description>Recent content in neural networks on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Tue, 06 Oct 2015 19:58:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.github.io/tags/neural-networks/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.in/tags/neural-networks/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Introduction to Neural Networks</title>
-      <link>https://raghothams.github.io/posts/intro-neural-networks/</link>
+      <link>https://raghothams.in/posts/intro-neural-networks/</link>
       <pubDate>Tue, 06 Oct 2015 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.github.io/posts/intro-neural-networks/</guid>
+      <guid>https://raghothams.in/posts/intro-neural-networks/</guid>
       <description>Artificial Neural Networks (ANNs) have totally changed what computers are capable of learning. Though neural networks date back 1940s, we are seeing an astonishing amount of increase of its applications in the recent 5–10 years.
 Artificial neural networks are modeled on the functioning of the human brain, where the input is converted into output based on a series of transformations. Though they are capable of achieving complex tasks, the way they work is fairly straight forward.</description>
     </item>

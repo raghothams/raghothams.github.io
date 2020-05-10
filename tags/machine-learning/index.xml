@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>machine learning on Raghotham Sripadraj</title>
-    <link>https://raghothams.github.io/tags/machine-learning/</link>
+    <link>https://raghothams.in/tags/machine-learning/</link>
     <description>Recent content in machine learning on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Mon, 20 Jan 2020 19:58:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.github.io/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.in/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Generalists</title>
-      <link>https://raghothams.github.io/posts/generalists/</link>
+      <link>https://raghothams.in/posts/generalists/</link>
       <pubDate>Mon, 20 Jan 2020 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.github.io/posts/generalists/</guid>
+      <guid>https://raghothams.in/posts/generalists/</guid>
       <description>Traditionally, machine learning roles (in 2000s) were taken up by people mostly from research background. Their go-to toolkit would generally be R or Matlab because of the richness of algorithms offered by these programming languages. These solutions were intended to run on single compute instances. Slowly, these roles were taken by brilliant engineers who strongly believed in open source philosophy. They built algorithms in python which were easy to use and more accessible.</description>
     </item>
     
     <item>
       <title>Introduction to Neural Networks</title>
-      <link>https://raghothams.github.io/posts/intro-neural-networks/</link>
+      <link>https://raghothams.in/posts/intro-neural-networks/</link>
       <pubDate>Tue, 06 Oct 2015 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.github.io/posts/intro-neural-networks/</guid>
+      <guid>https://raghothams.in/posts/intro-neural-networks/</guid>
       <description>Artificial Neural Networks (ANNs) have totally changed what computers are capable of learning. Though neural networks date back 1940s, we are seeing an astonishing amount of increase of its applications in the recent 5–10 years.
 Artificial neural networks are modeled on the functioning of the human brain, where the input is converted into output based on a series of transformations. Though they are capable of achieving complex tasks, the way they work is fairly straight forward.</description>
     </item>
     
     <item>
       <title>Machine Learning</title>
-      <link>https://raghothams.github.io/posts/machine-learning/</link>
+      <link>https://raghothams.in/posts/machine-learning/</link>
       <pubDate>Wed, 11 Jun 2014 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.github.io/posts/machine-learning/</guid>
+      <guid>https://raghothams.in/posts/machine-learning/</guid>
       <description>I had zero knowledge about machine learning, but wanted to explore. I took up Large Scale Hierarchical Text Classification (LSHTC) as my Masters dissertation project, so that I have a good scenario to start Machine Learning
 The first thing I wanted to know was the format of data provided by LSHTC. Turned out that it was SVM format. The training data and test data had the following format
 label,label,label… feature:value feature:value</description>

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>spark on Raghotham Sripadraj</title>
-    <link>https://raghothams.github.io/tags/spark/</link>
+    <link>https://raghothams.in/tags/spark/</link>
     <description>Recent content in spark on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Wed, 12 Dec 2018 19:58:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.github.io/tags/spark/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.in/tags/spark/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MongoDB and PySPark 2.1.0</title>
-      <link>https://raghothams.github.io/posts/mongodb-pyspark/</link>
+      <link>https://raghothams.in/posts/mongodb-pyspark/</link>
       <pubDate>Wed, 12 Dec 2018 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.github.io/posts/mongodb-pyspark/</guid>
+      <guid>https://raghothams.in/posts/mongodb-pyspark/</guid>
       <description>Photo by Thomas Kvistholt on Unsplash
 The common problem with using the latest release of any framework is that there are no or very few adopters, docs are not updated or point to older versions. We encountered a similar problem while integrating MongoDB driver with Apache Spark 2.X. Majority of the library docs available as of today work only with spark 1.5+.
 All we wanted to do was to create a dataframe by reading a mongodb collection.</description>
@@ -25,10 +25,10 @@ All we wanted to do was to create a dataframe by reading a mongodb collection.</
     
     <item>
       <title>Spark 2.x External Packages</title>
-      <link>https://raghothams.github.io/posts/spark-external-packages/</link>
+      <link>https://raghothams.in/posts/spark-external-packages/</link>
       <pubDate>Tue, 11 Dec 2018 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.github.io/posts/spark-external-packages/</guid>
+      <guid>https://raghothams.in/posts/spark-external-packages/</guid>
       <description>Photo by Mika Baumeister on Unsplash
 The bane of using bleeding edge technology is very less or hidden information of new features in the latest version. We at Unnati use bleeding edge releases of many data science tools for various research and production systems. In this post we explain how to add external jars to Apache Spark 2.x application.
 Starting Spark 2.x, we can use the --package option to pass additional jars to spark-submit.</description>

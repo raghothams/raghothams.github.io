@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mongodb on Raghotham Sripadraj</title>
-    <link>https://raghothams.github.io/tags/mongodb/</link>
+    <link>https://raghothams.in/tags/mongodb/</link>
     <description>Recent content in mongodb on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Wed, 12 Dec 2018 19:58:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.github.io/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.in/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>MongoDB and PySPark 2.1.0</title>
-      <link>https://raghothams.github.io/posts/mongodb-pyspark/</link>
+      <link>https://raghothams.in/posts/mongodb-pyspark/</link>
       <pubDate>Wed, 12 Dec 2018 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.github.io/posts/mongodb-pyspark/</guid>
+      <guid>https://raghothams.in/posts/mongodb-pyspark/</guid>
       <description>Photo by Thomas Kvistholt on Unsplash
 The common problem with using the latest release of any framework is that there are no or very few adopters, docs are not updated or point to older versions. We encountered a similar problem while integrating MongoDB driver with Apache Spark 2.X. Majority of the library docs available as of today work only with spark 1.5+.
 All we wanted to do was to create a dataframe by reading a mongodb collection.</description>
