@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Knowledge Graph Notes - Raghotham Sripadraj</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Knowledge Graph Notes" />
+<meta property="og:description" content="How should AI explicitly represent knowledge?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://raghothams.in/posts/knowledge-graph-notes/" />
+<meta property="article:published_time" content="2020-07-23T19:04:42+05:30" />
+<meta property="article:modified_time" content="2020-07-23T19:04:42+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Knowledge Graph Notes"/>
+<meta name="twitter:description" content="How should AI explicitly represent knowledge?"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.in/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://raghothams.in/css/main.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://raghothams.in/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://raghothams.in/">
+				<img src="https://www.dropbox.com/s/1ie2nedgkaoaf1h/myAvatar.svg?raw=1" alt="Raghotham Sripadraj" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://raghothams.in/">Raghotham Sripadraj</a></h1>
+	<div class="site-description"><p></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/raghothams" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/raghothams" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">23</span>
+							<span class="rest">Jul 2020</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Knowledge Graph Notes</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<blockquote>
+<p>How should AI explicitly represent knowledge?</p>
+</blockquote>
+<p>My notes from <a href="https://web.stanford.edu/class/cs520/">CS520 - Knowledge Graph Seminar</a></p>
+<h2 id="session-1---what-is-knowledge-graph">Session 1 - What is Knowledge Graph?</h2>
+<p><em>Speakers: Denny Vrandečić, Jans Aasman, Mikhail Galkin</em></p>
+<p><strong>Denny</strong></p>
+<p>Denny speaks about knowledge graphs (KGs) are used for web search, question answer systems, data integration systems.</p>
+<p>Specific use case of Wiki Data</p>
+<ul>
+<li>KG built on 80M nodes, 1B edges</li>
+<li>Uses RDF open format (w3c)</li>
+<li><a href="http://schema.org">Schema.org</a> annotation</li>
+<li>SPARQL for querying</li>
+</ul>
+<p>Following the open format has great advantages. One example stated was how wikipedia can leverage other services which expose data. Wikipedia can run SPARQL to query OpenStreet Maps data - pick lat, long from OSM for ATMs in Munich for a specific bank network.</p>
+<p><strong>Jans</strong></p>
+<p>Discussion around modern KGs:</p>
+<ul>
+<li>Semantic graph DB</li>
+<li>Ontologies &amp; Taxonomies</li>
+<li>Rule based processing</li>
+<li>ML &amp; NLP based processing</li>
+</ul>
+<p>AllegroGraph's KG implementation:</p>
+<ol>
+<li>
+<p>Document / NLP - Chomsky KG</p>
+<p>The Noam Chomsky Knowledge Graph will link to over 1,000 articles &amp; over 100 books that Chomsky has authored about linguistics, mass media, politics &amp; war.</p>
+</li>
+<li>
+<p>Event Based for Motefiore Health Care</p>
+<p>Montefiore’s Patient-centered Analytical Learning Machine (PALM), a machine learning platform built from the ground up to predict &amp; prevent life-threatening medical conditions &amp; minimize wait times.</p>
+</li>
+</ol>
+<p><strong>Mikhail</strong></p>
+<ul>
+<li>Think of KG as world models in terms of entities &amp; relations</li>
+<li>Encoding can be based on different representations</li>
+</ul>
+<p>Representations:</p>
+<ol>
+<li>
+<p>Symbolic - Logic, DB</p>
+<ul>
+<li>
+<p>Store as triples</p>
+<p>Subject-Predicate-Object</p>
+<p>Rajakumara starring Puneet</p>
+<p>Puneet born Chennai</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Vector - NLP, Computer Vision</p>
+<ul>
+<li>Embeddings - Leverage high dimensional space &amp; a function to group similar things nearby</li>
+</ul>
+</li>
+</ol>
+<p>KGs can be viewed from different Point of View (PoV):</p>
+<ul>
+<li>
+<p>Logic programming, RDF way</p>
+</li>
+<li>
+<p>RDMS - entities are cells, relations are columns</p>
+</li>
+<li>
+<p>Computer Vision - CNN + RPN ⇒ graph inference</p>
+</li>
+<li>
+<p>NLP</p>
+<p>Knowledge Graph ⇒ Named Entity Recognition</p>
+<p>Information Retrieval ⇒ Relation Linking</p>
+<p>Unstructured Sources ⇒ Question Answer System</p>
+<p>Language Models</p>
+</li>
+</ul>
+<hr>
+<h2 id="session-2---how-to-create-knowledge-graph">Session 2 - How to create Knowledge Graph?</h2>
+<p><em>Speakers: Juan Sequeda, Chris Ré, Xiao Ling</em></p>
+<p><strong>Xiao Ling</strong></p>
+<p>Discussion on how Siri Knowledge is built. It is based on triples - subject, predicate, object.</p>
+<p>Sources are:</p>
+<ol>
+<li>Unstructured text articles</li>
+<li>Semi structured</li>
+<li>Structured features</li>
+<li>Human Curated</li>
+</ol>
+<p>All these are fused together to build the Siri KG. Techniques used - Info Box extraction from wikipedia, Entity Resolution.</p>
+<p>Challenges</p>
+<ul>
+<li>
+<p>Fields do not match</p>
+<p>Date of Birth, DoB, Birth Date - all of them mean the same</p>
+</li>
+</ul>
+<p>Built:</p>
+<ul>
+<li>RIBE - Robust Info Box Extraction (HTML input ⇒ Triple as output)</li>
+<li>Candidate Extraction Models</li>
+<li>Entity Linking Models</li>
+<li>Entity Resolution Models</li>
+</ul>
+<hr>
+<h2 id="session-3---what-are-some-advanced-knowledge-graph">Session 3 - What are some advanced knowledge graph?</h2>
+<p><em>Speakers: Mike Tung, Cogan Shimizu, Marie-Laure Mugnier</em></p>
+<p><strong>Mike</strong></p>
+<p>DiffBot KG built on full public web</p>
+<p>Their pipeline looks like this</p>
+<ol>
+<li>Page type classification - classify page type &amp; language</li>
+<li>Visual Extraction - extract product information, metadata links, images, price</li>
+<li>NLU - language detection, enetity detection</li>
+<li>Record Linking</li>
+</ol>
+<hr>
+<h2 id="session-4---what-are-some-knowledge-graph-inference-algorithms">Session 4 - What are some knowledge graph inference algorithms?</h2>
+<p><em>Speakers: An Hai Doan, Yuxiao Dong, Georg Gottlob</em></p>
+<p><strong>An Hai Doan</strong></p>
+<p>Discussion  on Entity Matching use case - The Magellan Project</p>
+<p>Entity matching  steps</p>
+<ul>
+<li>Blocking - reduce number of pair comparisons</li>
+<li>Matching - Rule based / ML based</li>
+</ul>
+<p><strong>Yuxiao</strong></p>
+<p>Discussion on Microsoft Academic Graph (MAG)</p>
+<p>Leverages heterogenous graph transformer</p>
+<p><strong>George</strong></p>
+<p>Mostly spoke about VADALOG</p>
+<hr>
+<h2 id="session-5---how-to-evolve-a-knowledge-graph">Session 5 - How to evolve a knowledge graph?</h2>
+<p><em>Speakers: Héctor Pérez-Urbina, José Manuel Gómez-Pérez, Mike Uschold</em></p>
+<p><strong>Hector</strong></p>
+<p>How to model a dynamic world?</p>
+<p>Example of ambiguity - Vocaloids. Not only humans are artists but anime characters too.</p>
+<p>Modifying a KG is far easier than modifying RDBMS. Easy to change → Add properties.</p>
+<p>Evolution of KG</p>
+<ul>
+<li>Can UI still work with the change?</li>
+<li>Can all downstream applications work?</li>
+<li>Schema validation</li>
+</ul>
+<p>Test, Test, Test!</p>
+<p><strong>Jose</strong></p>
+<p>Discussion on KG for NLP</p>
+<ul>
+<li>ML driven NLP
+<ul>
+<li>Pros - flexible, SoTA, broad</li>
+<li>Cons - black box, lack real world understanding</li>
+</ul>
+</li>
+<li>KG based NLP
+<ul>
+<li>Pros - curated, logical graph, no training, rich &amp; deep representation</li>
+<li>Cons - rigid, brittle, expensive manual curation</li>
+</ul>
+</li>
+</ul>
+<p>Real world use cases:</p>
+<ol>
+<li>COGITO - Expert NLP based on KG
+<ul>
+<li>Sentence split / parse</li>
+<li>Morphological analysis</li>
+<li>Sentence / logical / grammar analysis</li>
+<li>Semantic analysis / disambiguation</li>
+</ul>
+</li>
+<li>Vecsigrafo
+<ul>
+<li>Learns word &amp; concept embeddings in shared space</li>
+<li>Combines corpus based &amp; graph based knowledge to build word representation</li>
+<li>Uses &amp; extends swivel algorithm</li>
+</ul>
+</li>
+<li>Transigrafo - Transformers + KG</li>
+</ol>
+<p><strong>Mike</strong></p>
+<ul>
+<li>Get rid of data silos with KG</li>
+<li>Use triple stores instead of RDBs</li>
+<li>ALWAYS HAVE A SCHEMA!</li>
+<li>Use SHACL - SHApes Constrains Language</li>
+<li>Use OWL + SHACL</li>
+<li>Build 1 enterprise ontology</li>
+</ul>
+<hr>
+<h2 id="session-6---how-do-users-interact-with-knowledge-graphs">Session 6 - How do users interact with knowledge graphs?</h2>
+<p><em>Speakers: Amit Prakash, Chaomei Chen, Leilani Gilpin</em></p>
+<p><strong>Amit</strong></p>
+<p>Discussion on work at ThoughtSpot</p>
+<ul>
+<li>ThoughtSpot success is mostly attributed to great UX. They took a year to crack the UX.</li>
+<li>Stick to simple algorithms, they work 80% of the time</li>
+<li>Figure out ways to collect data, labels with simple algorithms based on user feedback &amp; interaction</li>
+<li>Figure out success KPIs</li>
+</ul>
+<p><strong>Chaomei</strong></p>
+<p>Discussion on work at Drexel University</p>
+<ul>
+<li>KG on top of research papers &amp; citations</li>
+<li>Temporal movement analysis</li>
+<li>Pay attention to relation across domains. Look for bridges across clusters &amp; their importance</li>
+</ul>
+<p><strong>Leilani</strong></p>
+<p>Discussion on explaining explanations</p>
+<ul>
+<li>Explainability ≠ Interpretibility</li>
+<li>Interpretable ⇒ understandable to humans</li>
+<li>Completeness ⇒ describe operations in an accurate way</li>
+<li>Explanation needs needs to be both interpretable &amp; complete</li>
+</ul>
+<hr>
+<h2 id="session-7---what-are-some-prevalent-graph-engines-in-industry">Session 7 - What are some prevalent graph engines in industry?</h2>
+<p><em>Speakers: Philip Rathle, Brad Bebee, Matei Zaharia</em></p>
+<p><strong>Philip</strong></p>
+<ul>
+<li>
+<p>Showcased neo4j &amp; customers - NASA, eBay, DZD</p>
+</li>
+<li>
+<p>Spoke about property Graph way of modelling</p>
+</li>
+</ul>
+<p><strong>Brad</strong></p>
+<p>Showcased AWS Neptune</p>
+<p><strong>Matei</strong></p>
+<p>Showcased Databricks &amp; their graph framework</p>
+<p>Highlighted Use Cases</p>
+<ol>
+<li>
+<p>FINRA</p>
+<ul>
+<li>Detect illegal trading activity</li>
+<li>data source - 100 B events / day</li>
+<li>30 PB of historical data</li>
+</ul>
+</li>
+<li>
+<p>Drug Discovery - Astra Zeneca</p>
+<p>Recommend new compounds to test using NLP, BERT, GNN.</p>
+</li>
+<li>
+<p>Network Security - Apple</p>
+<ul>
+<li>Data source - logins, TCP, SSH</li>
+<li>Find security threats</li>
+<li>100 TB / day</li>
+<li>300 B events / day</li>
+<li>Leverage DeltaLake</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="session-8---what-is-the-role-of-knowledge-graphs-in-machine-learning">Session 8 - What is the role of knowledge graphs in machine learning?</h2>
+<p><em>Speakers: Jure Leskovec, Luna Dong, Robert Hoffman</em></p>
+<p><strong>Jure</strong></p>
+<p>Discussion on resoning in KG using embeddings. KGs are heterogeneous graphs</p>
+<ul>
+<li>
+<p>Traditional tasks - Link prediction / KG completion</p>
+<p>Obama born in US</p>
+<p>Obama nationality?</p>
+<p>learn projections, intersections &amp; other operations.</p>
+</li>
+<li>
+<p>Query2Box</p>
+</li>
+</ul>
+<p><strong>Luna</strong></p>
+<p>Discussion on Amazon Product Graph</p>
+<p>Use KG + ML for search, Alexa, product recommendations</p>
+<p>Knowledge Extraction involves</p>
+<ul>
+<li>Knowledge Alignment</li>
+<li>Knowledge cleaning</li>
+<li>Knowledge mining</li>
+</ul>
+<hr>
+<h2 id="session-9---what-are-some-high-value-use-cases-of-knowledge-graphs">Session 9 - What are some high value use cases of knowledge graphs?</h2>
+<p><em>Speakers: Jay Yu, Apoorv Saxena, David Newman</em></p>
+<p><strong>Jay</strong></p>
+<p>Discussion on KG at Intuit.</p>
+<p>Use case of Tax programming using logic graph &amp; KG.</p>
+<p><strong>Apoorv</strong></p>
+<p>Finance data is mostly RDBMS</p>
+<p>Risk assessment with company KG</p>
+<p>Use Cases:</p>
+<ul>
+<li>Link Traversal - How much % revenue comes from Boeing?</li>
+<li>Page Rank</li>
+<li>Community Detection</li>
+<li>Link Prediction</li>
+<li>Graph embedding</li>
+</ul>
+<p>Leveraging BERT to translate natural language to Cypher query</p>
+<hr>
+<h2 id="session-10---what-are-some-open-research-questions-on-knowledge-graphs">Session 10 - What are some open research questions on knowledge graphs?</h2>
+<p><em>Speakers: Richard Socher, Mark Musen, RV Guha</em></p>
+<p><strong>Richard</strong></p>
+<p>Deep Dive on real world use cases of KG with ML</p>
+<p>Neural Tensor Network for knowledge base completion</p>
+<p>How to think about multi hop link prediction / reasoning models ?</p>
+<p><strong>Mark</strong></p>
+<p>Contrarian view  - What do KGs really know?</p>
+<p>Spoke about MYCIN use case developed in 1970, which was SoTA back then.</p>
+<p>Earlier known as semantic networks. 50 years fast forward we are at the same place.</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/technology">technology</a></li>
+							
+							<li><a href="/tags/knowledge-graph">knowledge graph</a></li>
+							
+							<li><a href="/tags/embeddings">embeddings</a></li>
+							
+							<li><a href="/tags/nlp">nlp</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> © Copyright notice |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-71863978-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script>feather.replace()</script>
+</body>
+</html>

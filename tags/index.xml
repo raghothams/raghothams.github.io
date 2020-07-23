@@ -7,10 +7,46 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
-    <lastBuildDate>Sat, 21 Mar 2020 19:58:42 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2020 19:04:42 +0530</lastBuildDate>
     
 	<atom:link href="https://raghothams.in/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>embeddings</title>
+      <link>https://raghothams.in/tags/embeddings/</link>
+      <pubDate>Thu, 23 Jul 2020 19:04:42 +0530</pubDate>
+      
+      <guid>https://raghothams.in/tags/embeddings/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>knowledge graph</title>
+      <link>https://raghothams.in/tags/knowledge-graph/</link>
+      <pubDate>Thu, 23 Jul 2020 19:04:42 +0530</pubDate>
+      
+      <guid>https://raghothams.in/tags/knowledge-graph/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nlp</title>
+      <link>https://raghothams.in/tags/nlp/</link>
+      <pubDate>Thu, 23 Jul 2020 19:04:42 +0530</pubDate>
+      
+      <guid>https://raghothams.in/tags/nlp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>technology</title>
+      <link>https://raghothams.in/tags/technology/</link>
+      <pubDate>Thu, 23 Jul 2020 19:04:42 +0530</pubDate>
+      
+      <guid>https://raghothams.in/tags/technology/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>data</title>
@@ -36,15 +72,6 @@
       <pubDate>Sat, 21 Mar 2020 19:58:42 +0530</pubDate>
       
       <guid>https://raghothams.in/tags/fonts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>technology</title>
-      <link>https://raghothams.in/tags/technology/</link>
-      <pubDate>Sat, 21 Mar 2020 19:58:42 +0530</pubDate>
-      
-      <guid>https://raghothams.in/tags/technology/</guid>
       <description></description>
     </item>
     
@@ -117,24 +144,6 @@
       <pubDate>Sat, 08 Oct 2016 19:58:42 +0530</pubDate>
       
       <guid>https://raghothams.in/tags/d3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>embeddings</title>
-      <link>https://raghothams.in/tags/embeddings/</link>
-      <pubDate>Sat, 10 Oct 2015 19:58:42 +0530</pubDate>
-      
-      <guid>https://raghothams.in/tags/embeddings/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nlp</title>
-      <link>https://raghothams.in/tags/nlp/</link>
-      <pubDate>Sat, 10 Oct 2015 19:58:42 +0530</pubDate>
-      
-      <guid>https://raghothams.in/tags/nlp/</guid>
       <description></description>
     </item>
     

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>embeddings on Raghotham Sripadraj</title>
-    <link>https://raghothams.in/tags/embeddings/</link>
-    <description>Recent content in embeddings on Raghotham Sripadraj</description>
+    <title>knowledge graph on Raghotham Sripadraj</title>
+    <link>https://raghothams.in/tags/knowledge-graph/</link>
+    <description>Recent content in knowledge graph on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Thu, 23 Jul 2020 19:04:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.in/tags/embeddings/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.in/tags/knowledge-graph/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -25,17 +25,6 @@ Denny
 Denny speaks about knowledge graphs (KGs) are used for web search, question answer systems, data integration systems.
 Specific use case of Wiki Data
  KG built on 80M nodes, 1B edges Uses RDF open format (w3c) Schema.org annotation SPARQL for querying  Following the open format has great advantages.</description>
-    </item>
-    
-    <item>
-      <title>Word Embedding</title>
-      <link>https://raghothams.in/posts/word-embeddings/</link>
-      <pubDate>Sat, 10 Oct 2015 19:58:42 +0530</pubDate>
-      
-      <guid>https://raghothams.in/posts/word-embeddings/</guid>
-      <description>Word embedding is a technique of converting words to vectors of a high dimension space. In simple terms, in each dimension, we group words based on a particular aspect — gender, colour etc., and score the words based on similarity in that space.
- For example — “I have a red car, maroon shirt and a grey bicycle”
- One of the dimensions can represent colour. Red, maroon and grey are assigned similar scores.</description>
     </item>
     
   </channel>
