@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>engineer on Raghotham Sripadraj</title>
-    <link>https://raghothams.in/tags/engineer/</link>
+    <link>https://raghothams.github.io/tags/engineer/</link>
     <description>Recent content in engineer on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Mon, 20 Jan 2020 19:58:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.in/tags/engineer/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.github.io/tags/engineer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Generalists</title>
-      <link>https://raghothams.in/posts/generalists/</link>
+      <link>https://raghothams.github.io/posts/generalists/</link>
       <pubDate>Mon, 20 Jan 2020 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.in/posts/generalists/</guid>
+      <guid>https://raghothams.github.io/posts/generalists/</guid>
       <description>Traditionally, machine learning roles (in 2000s) were taken up by people mostly from research background. Their go-to toolkit would generally be R or Matlab because of the richness of algorithms offered by these programming languages. These solutions were intended to run on single compute instances. Slowly, these roles were taken by brilliant engineers who strongly believed in open source philosophy. They built algorithms in python which were easy to use and more accessible.</description>
     </item>
     

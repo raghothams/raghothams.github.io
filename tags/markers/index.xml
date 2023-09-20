@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>markers on Raghotham Sripadraj</title>
-    <link>https://raghothams.in/tags/markers/</link>
+    <link>https://raghothams.github.io/tags/markers/</link>
     <description>Recent content in markers on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Thu, 22 Jan 2015 19:58:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.in/tags/markers/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.github.io/tags/markers/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Markers with D3</title>
-      <link>https://raghothams.in/posts/markers-d3/</link>
+      <link>https://raghothams.github.io/posts/markers-d3/</link>
       <pubDate>Thu, 22 Jan 2015 19:58:42 +0530</pubDate>
       
-      <guid>https://raghothams.in/posts/markers-d3/</guid>
+      <guid>https://raghothams.github.io/posts/markers-d3/</guid>
       <description>Every time I look at the examples page of D3, I’m simply go…
 @mbostock has transformed how visualizations are created for web.
 Today I learnt how to use svg markers with D3. I was using force layout to analyze graphs, just like this example. But I wanted a directed graph!

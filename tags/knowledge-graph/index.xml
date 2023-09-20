@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>knowledge graph on Raghotham Sripadraj</title>
-    <link>https://raghothams.in/tags/knowledge-graph/</link>
+    <link>https://raghothams.github.io/tags/knowledge-graph/</link>
     <description>Recent content in knowledge graph on Raghotham Sripadraj</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Copyright notice</copyright>
     <lastBuildDate>Thu, 23 Jul 2020 19:04:42 +0530</lastBuildDate>
     
-	<atom:link href="https://raghothams.in/tags/knowledge-graph/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://raghothams.github.io/tags/knowledge-graph/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Knowledge Graph Notes</title>
-      <link>https://raghothams.in/posts/knowledge-graph-notes/</link>
+      <link>https://raghothams.github.io/posts/knowledge-graph-notes/</link>
       <pubDate>Thu, 23 Jul 2020 19:04:42 +0530</pubDate>
       
-      <guid>https://raghothams.in/posts/knowledge-graph-notes/</guid>
+      <guid>https://raghothams.github.io/posts/knowledge-graph-notes/</guid>
       <description>How should AI explicitly represent knowledge?
  My notes from CS520 - Knowledge Graph Seminar
 Session 1 - What is Knowledge Graph? Speakers: Denny Vrandečić, Jans Aasman, Mikhail Galkin
